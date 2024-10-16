@@ -1,0 +1,62 @@
+---
+title: "My Model Analysis"
+format: 
+  pptx:
+    slide_level: 2
+    font-size: 14pt  # 调整字体大小，防止溢出
+---
+
+# Model 2 and Transformation Explanation
+
+## Model 2 Formula
+
+The formula for Model 2 is shown below:
+
+$$
+\begin{aligned}
+\text{Ages} = & \ \alpha + \beta_1 \cdot \text{Sex}_{I} + \beta_2 \cdot \text{Sex}_{M} + \beta_3 \cdot \text{Diameter} \\
+              & + \beta_4 \cdot \log(\text{Height}) + \beta_5 \cdot \text{Whole\_weight} \\
+              & + \beta_6 \cdot \text{Shucked\_weight} + \beta_7 \cdot \log(\text{Viscera\_weight}) \\
+              & + \beta_8 \cdot \log(\text{Shell\_weight}) + \epsilon
+\end{aligned}
+$$ The transformation in Model 2 is primarily aimed at improving the model's ability to meet the assumptions of linear regression, specifically:Linearity, Reducing Skewness, Homoscedasticity, Normality of Residuals.
+
+# model 2 Linearity check
+
+![](model2check.png){fig-width="80%"}
+
+The log-transformed predictor variables generally exhibit a linear relationship with Ages, as expected in a linear regression model.
+
+# A3-A4 Transfer to Model 3
+
+![](model2qq.png){fig-width="80%"} ![](model2resi.png){fig-width="80%"} 
+
+Model 2 exhibits problems with non-normal residuals (especially in the tails) and heteroscedasticity, as seen in both the QQ plot and residuals vs fitted plot. This suggests that the assumptions of linear regression are violated. \# Model 3 and Transformation Explanation
+
+
+## Model 3 Formula
+
+The formula for **Model 3** with the inverse of **Ages** as the response variable is shown below:
+
+$$
+\begin{aligned}
+\frac{1}{\text{Ages}} = & \ \alpha + \beta_1 \cdot \text{Sex}_I + \beta_2 \cdot \text{Sex}_M + \beta_3 \cdot \log(\text{Diameter}) \\
+                        & + \beta_4 \cdot \log(\text{Height}) + \beta_5 \cdot \log(\text{Whole\_weight}) \\
+                        & + \beta_6 \cdot \log(\text{Shucked\_weight}) + \beta_7 \cdot \log(\text{Viscera\_weight}) \\
+                        & + \beta_8 \cdot \log(\text{Shell\_weight}) + \epsilon
+\end{aligned}
+$$
+
+the model exhibits a more linear relationship between the response and predictors
+
+# model 3 Linearity check
+
+![](model3check.png){fig-width="80%"}
+
+the model adequately satisfies the linearity assumption, with only minor deviations for some predictors.
+
+# A3-A4
+
+![](model3qq.png){fig-width="80%"}
+
+![](model3resi.png){fig-width="80%"} Model 3 improves significantly on these issues, showing better normality of residuals and addressing heteroscedasticity. The inverse transformation applied in Model 3 has helped stabilize the variance and improve the overall model fit.
